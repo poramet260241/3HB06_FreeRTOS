@@ -1,9 +1,9 @@
 #include <Arduino_FreeRTOS.h>
-#define R_LED 8
-#define G_LED 9 
-#define Y_LED 10
-#define O_LED 11
-#define PUSH_SW 6
+#define R_LED 3
+#define G_LED 4 
+#define Y_LED 5
+#define O_LED 6
+#define PUSH_SW 2
 #define POT A0
 
 int mode_sel=0;
