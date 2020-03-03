@@ -1,11 +1,4 @@
 #include <Arduino_FreeRTOS.h>
-//#define R_LED 3
-//#define G_LED 4 
-//#define Y_LED 5
-//#define O_LED 6
-//#define PUSH_SW 2
-//#define POT A0
-
 #define R_LED 8
 #define G_LED 9 
 #define Y_LED 10
@@ -39,7 +32,6 @@ void Read_Poten(void *pvParameters){
 
 void Display_R_LED(void *pvParameters)
 {
-  Serial.println("TESTTTT");
   pinMode(R_LED, OUTPUT);
   while (1) {
     if(mode_sel == 0){
