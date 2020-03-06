@@ -26,8 +26,8 @@ void setup() {
 void Read_Poten(void *pvParameters){
   while (1){
     pot_val = analogRead(POT); // read the input pin
-    Serial.println(pot_val);
-    delay_time = map(pot_val, 0, 1023, 500, 1500);
+    //Serial.println(pot_val);
+    delay_time = map(pot_val, 0, 1023, 50, 1500);
   }
 } 
 
@@ -35,44 +35,53 @@ void Display_R_LED(void *pvParameters)
 {
   pinMode(R_LED, OUTPUT);
   while (1){
+    //Serial.println("R_LED");
     if(mode_sel == 0){
-      if(count_show > 4)
-        count_show = 0; 
-      if(count_show == 0)
+      if(count_show == 0){
         digitalWrite(R_LED, HIGH);
-      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
         digitalWrite(R_LED, LOW);
+      }
+      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
     }
     else if(mode_sel == 1){
-      if(count_show > 4)
-        count_show = 0;
-       
-      if(count_show == 4)
+      if(count_show == 3){
         digitalWrite(R_LED, HIGH);
-      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
         digitalWrite(R_LED, LOW);
+      }
+      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
     }
-    else if(mode_sel == 2){
-      if(count_show > 7)
-        count_show =0;
-        
-      if(count_show >=1 && count_show <= 7)
+    else if(mode_sel == 2){   
+      if(count_show >=1 && count_show <= 7){
         digitalWrite(R_LED, HIGH);
-      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
         digitalWrite(R_LED, LOW);
+      }
+      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
     }
-    else if(mode_sel == 3){
-      if(count_show > 7)
-        count_show = 0;
-        
-      if(count_show == 4)
+    else if(mode_sel == 3){   
+      if(count_show == 4){
         digitalWrite(R_LED, HIGH);
-      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
         digitalWrite(R_LED, LOW);
+      }
+      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
     }
-    
-    vTaskDelay(pdMS_TO_TICKS(delay_time));
     count_show++;
+  Serial.println(count_show);
+  if(mode_sel < 2){
+    if(count_show > 4)
+      count_show = 0;
+  }
+  else{
+    if(count_show > 7)
+      count_show = 0;
+  }
   }
 }
 
@@ -80,45 +89,43 @@ void Display_G_LED(void *pvParameters)
 {
   pinMode(G_LED, OUTPUT);
   while (1){
+    //Serial.println("G_LED");
     if(mode_sel == 0){
-      if(count_show > 4)
-        count_show = 0;
-        
-      if(count_show == 1)
+      if(count_show == 1){
         digitalWrite(G_LED, HIGH);
-      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
         digitalWrite(G_LED, LOW);
+      }
+      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
     }
     else if(mode_sel == 1){
-      if(count_show > 4)
-        count_show = 0;
-       
-      if(count_show == 2)
+      if(count_show == 2){
         digitalWrite(G_LED, HIGH);
-      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
         digitalWrite(G_LED, LOW);
+      }
+      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
     }
     else if(mode_sel == 2){
-      if(count_show > 8)
-        count_show =0;
-        
-      if(count_show >=2 && count_show <= 6)
+      if(count_show >=2 && count_show <= 6){
         digitalWrite(G_LED, HIGH);
-      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
         digitalWrite(G_LED, LOW);
+      }
+      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
     }
-    else if(mode_sel == 3){
-      if(count_show > 8)
-        count_show = 0;
-        
-      if(count_show >=3 && count_show <= 5)
+    else if(mode_sel == 3){   
+      if(count_show >=3 && count_show <= 5){
         digitalWrite(G_LED, HIGH);
-      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
         digitalWrite(G_LED, LOW);
+      }
+      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
     }
-    
-    vTaskDelay(pdMS_TO_TICKS(delay_time));
-    count_show++;
   }
 }
 
@@ -126,45 +133,42 @@ void Display_Y_LED(void *pvParameters)
 {
   pinMode(Y_LED, OUTPUT);
   while (1){
-    if(mode_sel == 0){
-      if(count_show > 4)
-        count_show = 0;
-        
-      if(count_show == 2)
+    if(mode_sel == 0){    
+      if(count_show == 2){
         digitalWrite(Y_LED, HIGH);
-      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
         digitalWrite(Y_LED, LOW);
+      }
+      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
     }
     else if(mode_sel == 1){
-      if(count_show > 4)
-        count_show = 0;
-       
-      if(count_show == 1)
+      if(count_show == 1){
         digitalWrite(Y_LED, HIGH);
-      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
         digitalWrite(Y_LED, LOW);
+      }
+      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
     }
     else if(mode_sel == 2){
-      if(count_show > 8)
-        count_show =0;
-        
-      if(count_show >=3 && count_show <= 5)
+      if(count_show >=3 && count_show <= 5){
         digitalWrite(Y_LED, HIGH);
-      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
         digitalWrite(Y_LED, LOW);
+      }
+      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
     }
-    else if(mode_sel == 3){
-      if(count_show > 8)
-        count_show = 0;
-        
-      if(count_show >=2 && count_show <= 6)
+    else if(mode_sel == 3){     
+      if(count_show >=2 && count_show <= 6){
         digitalWrite(Y_LED, HIGH);
-      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
         digitalWrite(Y_LED, LOW);
+      }
+      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
     }
-    
-    vTaskDelay(pdMS_TO_TICKS(delay_time));
-    count_show++;
   }
 }
 
@@ -172,45 +176,42 @@ void Display_O_LED(void *pvParameters)
 {
   pinMode(O_LED, OUTPUT);
   while (1){
-    if(mode_sel == 0){
-      if(count_show > 4)
-        count_show = 0;
-        
-      if(count_show == 3)
+    if(mode_sel == 0){ 
+      if(count_show == 3){
         digitalWrite(O_LED, HIGH);
-      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
         digitalWrite(O_LED, LOW);
+      }
+      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
     }
     else if(mode_sel == 1){
-      if(count_show > 4)
-        count_show = 0;
-       
-      if(count_show == 0)
+      if(count_show == 0){
         digitalWrite(O_LED, HIGH);
-      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
         digitalWrite(O_LED, LOW);
+      }
+      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
     }
     else if(mode_sel == 2){
-      if(count_show > 8)
-        count_show =0;
-        
-      if(count_show == 4)
+      if(count_show == 4){
         digitalWrite(O_LED, HIGH);
-      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
         digitalWrite(O_LED, LOW);
+      }
+      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
     }
-    else if(mode_sel == 3){
-      if(count_show > 8)
-        count_show = 0;
-        
-      if(count_show >=1 && count_show <= 7)
+    else if(mode_sel == 3){  
+      if(count_show >=1 && count_show <= 7){
         digitalWrite(O_LED, HIGH);
-      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
         digitalWrite(O_LED, LOW);
+      }
+      else
+        vTaskDelay(pdMS_TO_TICKS(delay_time));
     }
-    
-    vTaskDelay(pdMS_TO_TICKS(delay_time));
-    count_show++;
   }
 }
 

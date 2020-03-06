@@ -25,7 +25,7 @@ void Read_Poten(void *pvParameters){
   while (1){
     pot_val = analogRead(POT); // read the input pin
     Serial.println(pot_val);
-    //delay_time = map(pot_val, 0, 1023, 500, 1500);
+    delay_time = map(pot_val, 0, 1023, 50, 1500);
   }
 } 
 
